@@ -6,14 +6,17 @@ export default class Veterinarian {
   }
 
   AddAnimalExpirience(animal) {
-    this.AnimalExpirience.push(animal)
+    this.AnimalExpirience.push(animal.constructor.name)
   }
 
   HasAnimalExpirience(animal) {
-    return this.AnimalExpirience.includes(animal)
+    return this.AnimalExpirience.includes(animal.constructor.name)
   }
 
-  static HealAnimal(animal) {
-    console.log(animal)
+  HealAnimal(animal) {
+    if (this.HasAnimalExpirience(animal) && animal.NeededMedicine.count) {
+      return animal.Heal(animal.NeededMedicine)
+    }
+    return false
   }
 }

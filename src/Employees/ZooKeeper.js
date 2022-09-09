@@ -6,14 +6,17 @@ export default class ZooKeeper {
   }
 
   AddAnimalExpirience(animal) {
-    this.AnimalExpirience.push(animal)
+    this.AnimalExpirience.push(animal.constructor.name)
   }
 
   HasAnimalExpirience(animal) {
-    return this.AnimalExpirience.includes(animal)
+    return this.AnimalExpirience.includes(animal.constructor.name)
   }
 
-  static FeedAnimal(animal) {
-    console.log(animal)
+  FeedAnimal(time, animal) {
+    if (this.HasAnimalExpirience(animal) && animal.FavouriteFood.count) {
+      return animal.Feed(time, this)
+    }
+    return false
   }
 }

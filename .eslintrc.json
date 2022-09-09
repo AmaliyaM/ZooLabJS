@@ -12,5 +12,6 @@
     },
     "rules": {
         "semi": 0
+        //"import/extensions": "never"
     }
 }
