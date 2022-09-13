@@ -1,6 +1,6 @@
 export default class Enclosure {
   constructor({
-    name, animals, parentZoo, squreFeet,
+    name, animals = [], parentZoo, squreFeet = 50,
   }) {
     this.Name = name
     this.Animals = animals

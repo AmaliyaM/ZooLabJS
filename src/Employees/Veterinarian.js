@@ -1,20 +1,23 @@
+import logList from "../log.js"
+
 export default class Veterinarian {
-  constructor(firstName, lastName, animalExpirience) {
+  constructor(firstName, lastName, animalExperience) {
     this.FirstName = firstName
     this.LastName = lastName
-    this.AnimalExpirience = animalExpirience
+    this.AnimalExperience = animalExperience
   }
 
-  AddAnimalExpirience(animal) {
-    this.AnimalExpirience.push(animal.constructor.name)
+  AddAnimalExperience(animal) {
+    this.AnimalExperience.push(animal.constructor.name)
   }
 
-  HasAnimalExpirience(animal) {
-    return this.AnimalExpirience.includes(animal.constructor.name)
+  HasAnimalExperience(animal) {
+    return this.AnimalExperience.includes(animal.constructor.name)
   }
 
   HealAnimal(animal) {
-    if (this.HasAnimalExpirience(animal) && animal.NeededMedicine.count) {
+    if (this.HasAnimalExperience(animal) && animal.NeededMedicine.count) {
+      logList.push(`You heal animal ${animal.constructor.name} ${animal.ID}`)
       return animal.Heal(animal.NeededMedicine)
     }
     return false

@@ -1,15 +1,16 @@
 // eslint-disable-next-line import/prefer-default-export
+import logList from '../log.js'
 import FeedTime from './FeedTime.js'
 
 export default class Animal {
   constructor(
     requiredSpaceSqFt,
     favouriteFood,
-    feedTimes,
     feedSchedule,
     id,
-    sick,
-    neededMedicine,
+    sick = false,
+    neededMedicine = '',
+    feedTimes = [],
   ) {
     this.RequiredSpaceSqFt = requiredSpaceSqFt
     this.FavouriteFood = favouriteFood
@@ -25,26 +26,26 @@ export default class Animal {
   }
 
   Feed(time, zooKeeper) {
-    this.FavouriteFood -= 1
-    const feed = new FeedTime(time, zooKeeper)
+    this.FavouriteFood.count -= 1
+    console.log('-------------', this.FavouriteFood)
+    const feed = new FeedTime(time.getHours(), zooKeeper)
     this.FeedTimes.push(feed)
-    console.log(
-      `${this.constructor.name} ${this.ID} was fed by zookeeper ${zooKeeper}`,
-    )
     return true
   }
 
   IsSick() {
+    logList.push(`${this.constructor.name} ${this.ID} sick: ${this.Sick}`)
     return this.Sick
   }
 
   AddFeedSchedule(hours) {
+    logList.push(`You added ${hours} at ${this.constructor.name} ${this.ID} feed schedule`)
     this.FeedSchedule.push(hours)
   }
 
   Heal(medicine) {
     const medicineItem = medicine
-    this.NeededMedicine = null
+    this.NeededMedicine.length = 0
     this.Sick = false
     medicineItem.count -= 1
     return true
