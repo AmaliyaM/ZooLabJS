@@ -15,10 +15,10 @@
         "no-console": 0,
         "new-cap":[0],
         "import/extensions": [
-            0,
+            "error",
             "ignorePackages",
             {
-              "js": "never"
+              "js": "always"
             }
          ]
     }

@@ -1,4 +1,4 @@
-import logList from "../log.js"
+import logList from '../log.js'
 
 export default class ZooKeeper {
   constructor(firstName, lastName, animalExperience) {
